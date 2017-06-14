@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+
+#rosrun dji_sdk_demo dji_sdk_test_bazier
+#python plot2.py
+ctrl_c_pressed=0
+
+trap 'onCtrlC' INT
+function onCtrlC () {
+    echo 'Ctrl+C is captured'
+    ctrl_c_pressed=1
+}
+
+path_now=$(pwd)
+path_data=$(pwd)"/data/"
+
+case $1 in
+    1)
+#        rosrun dji_sdk_demo dji_sdk_test_planner_path
+        roslaunch iarc_arena_simulator simulator_test_graph.launch
+#        python plot_pathplan.py
+#        eog plot_edgemap.png
+    ;;
+    test)
+        catkin_make iarc_arena_simulator_generate_messages
+        catkin_make
+
+        if [ "$ctrl_c_pressed" = "1" ]; then
+            echo "exit"
+            exit 1
+        fi
+
+        roslaunch iarc_arena_simulator simulator_bigdata.launch
+        
+    ;;
+    all|3|*)
+        source me
+        catkin_make iarc_arena_simulator_generate_messages
+        catkin_make
+        for i in `seq 2`
+        do
+            for k in `seq 3`
+            do
+                if [ ! -d $path_now"/src/iarc_arena_simulator/launch/param"$k ]; then
+                    break 1
+                fi
+
+                if [ "$ctrl_c_pressed" = "1" ]; then
+                    echo "quit for ctrl+c pressed"
+                    exit 1
+                fi
+
+                
+                path_param_k=$path_now"/src/iarc_arena_simulator/launch/param"$k
+                path_param_loop_yaml=$path_param_k"/param_loop.yaml"
+                path_param_yaml=$path_param_k"/param.yaml"
+                path_readme_md=$path_param_k"/readme.md"
+
+                launch_package="iarc_arena_simulator"
+                launch_file="simulator_bigdata.launch"
+
+                loop_param_k="param"$k
+                mkdir -p $path_data$loop_param_k
+
+                last_id=0
+                path_file_id=$path_data$loop_param_k"/last.id"
+
+                if [ ! -f "$path_file_id" ]; then
+                    last_id=0
+                else
+                    read last_id < $path_file_id
+                fi
+                loop_id=`expr $last_id + 1`
+                echo $loop_id >$path_file_id   
+                 
+                loop_id_str=$(printf "%03d" $loop_id)
+                loop_namespace=$loop_param_k"/"$loop_id_str
+
+                echo "loop_param_k : "\'$loop_param_k\'     >$path_param_loop_yaml
+                echo "loop_id : "$loop_id                   >>$path_param_loop_yaml
+                echo "loop_id_str : "\'$loop_id_str\'           >>$path_param_loop_yaml
+                echo "file_name_prefix : "\'$path_data\'        >>$path_param_loop_yaml
+
+                path_target_dir=$path_data$loop_param_k"/"$loop_id_str
+                mkdir -p $path_target_dir
+
+                roslaunch $launch_package $launch_file __ns:=$loop_namespace path_param_loop_yaml:=$path_param_loop_yaml path_param_yaml:=$path_param_yaml
+
+                rosparam dump $path_param_k/param_dump.yaml
+                lscpu >$path_param_k/cpu_dump.txt
+                cp $path_param_k/*.* $path_target_dir
+
+            done
+        done
+    ;;
+
+esac
+#sh kissprocess.sh dji_sdk
+echo "Complete!"
+
+
+
