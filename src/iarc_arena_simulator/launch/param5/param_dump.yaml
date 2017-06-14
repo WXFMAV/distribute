@@ -1,0 +1,275 @@
+angle_field_rad: 2.0943951023931953
+arena_size: 20.0
+const_tf: 0.33
+cruise_circular_sample_count: 10
+cruise_height: 2.0
+cruise_velocity: 1.0
+edge_angle_de: 0.7853981633974483
+edge_angle_limited: 1.5707963267948966
+edge_bazier_rate: 0.1
+edge_coef_angle: 0.001
+edge_nosolution_jump: 100000
+edge_num_direction: 8
+edge_time_one_edge: 1.0
+edge_velocity_static: 0.1
+file_name_ast_cruise: rec_ast_cruise.txt
+file_name_ast_path: rec_ast_path.txt
+file_name_ast_tracking: rec_ast_tracking.txt
+file_name_bazier_in: bazier_in.txt
+file_name_bazier_out: bazier_out.txt
+file_name_controller: rec_controller.txt
+file_name_edgemap: edgemap_out.txt
+file_name_edgepath: edgepath_out.txt
+file_name_lqr_plist: params/plist.txt
+file_name_map: rec_map.txt
+file_name_path: rec_path.txt
+file_name_path_env: rec_path_env.txt
+file_name_prefix: /home/exbot/workspace/hehualin_ws/IARC_BigSim/src/iarc_arena_simulator/../../data/
+file_name_task: rec_task.txt
+file_name_task_env: rec_task_env.txt
+file_name_timecost: timecost_out.txt
+file_name_tracking: rec_tracking.txt
+interaction_height: 1.0
+list_capacity: 5000
+loop_id: 1
+loop_id_str: '001'
+loop_param_k: test
+m: 3
+map_memory_org_x: -10.0
+map_memory_org_y: -10.0
+map_memory_step_x: 1.0
+map_memory_step_y: 1.0
+n: 9
+obstacle_time_forget_ms: 10000
+param1:
+  '001': {angle_field_rad: 2.0943951023931953, arena_size: 20.0, const_tf: 0.33, cruise_circular_sample_count: 10,
+    cruise_height: 2.0, cruise_velocity: 1.0, edge_angle_de: 0.7853981633974483, edge_angle_limited: 1.5707963267948966,
+    edge_bazier_rate: 0.1, edge_coef_angle: 0.001, edge_nosolution_jump: 100000, edge_num_direction: 8,
+    edge_time_one_edge: 1.0, edge_velocity_static: 0.1, file_name_ast_cruise: rec_ast_cruise.txt,
+    file_name_ast_path: rec_ast_path.txt, file_name_ast_tracking: rec_ast_tracking.txt,
+    file_name_bazier_in: bazier_in.txt, file_name_bazier_out: bazier_out.txt, file_name_controller: rec_controller.txt,
+    file_name_edgemap: edgemap_out.txt, file_name_edgepath: edgepath_out.txt, file_name_lqr_plist: params/plist.txt,
+    file_name_map: rec_map.txt, file_name_path: rec_path.txt, file_name_path_env: rec_path_env.txt,
+    file_name_prefix: /home/exbot/workspace/hehualin_ws/IARC_BigSim2/data/, file_name_task: rec_task.txt,
+    file_name_task_env: rec_task_env.txt, file_name_timecost: timecost_out.txt, file_name_tracking: rec_tracking.txt,
+    interaction_height: 1.0, list_capacity: 5000, loop_id: 1, loop_id_str: '001',
+    loop_param_k: param1, m: 3, map_memory_org_x: -10.0, map_memory_org_y: -10.0,
+    map_memory_step_x: 1.0, map_memory_step_y: 1.0, n: 9, obstacle_time_forget_ms: 10000,
+    period_turn_ms: 20000, radius_collision: 1.0, radius_lidar: 5.0, radius_neary: 15.0,
+    radius_safe: 2.0, ramda_cruise: 0.2, ramda_m: 2.0, ramda_m_dis: 0.0, ramda_m_i_op: 1.0,
+    ramda_o: 0.0, ramda_o_a: 1.0, ramda_o_s: 0.0, ramda_t: 10.0, ramda_t_A: 1.0, ramda_t_E: -1,
+    ramda_t_S: 1, ramda_t_SAE: 1.0, ramda_t_theta: 0.5, ramda_t_y: 1.0, ros_rate_cruise: 5,
+    ros_rate_decision: 5, ros_rate_path: 15, ros_rate_tracking: 50, str_arena_frame: /arena_frame,
+    target_time_forget_ms: 40000, taskslist_capacity: 50, time_cruise_det_ms: 8000,
+    time_offset_ms: 200, time_turn_180_ms: 2600, time_turn_45_ms: 650, time_turn_distinguish_ms: 1000,
+    tree_search_gama: 0.8, tree_search_gama_distance: 0.01, tree_search_gama_inner: 0.01,
+    tree_search_gama_theta: 0.01, tree_search_max_depth: 0, tree_search_max_target_counts: 4,
+    velocity_mav_max: 2.0, velocity_obs: 0.33, velocity_tgt: 0.33}
+  '002': {angle_field_rad: 2.0943951023931953, arena_size: 20.0, const_tf: 0.33, cruise_circular_sample_count: 10,
+    cruise_height: 2.0, cruise_velocity: 1.0, edge_angle_de: 0.7853981633974483, edge_angle_limited: 1.5707963267948966,
+    edge_bazier_rate: 0.1, edge_coef_angle: 0.001, edge_nosolution_jump: 100000, edge_num_direction: 8,
+    edge_time_one_edge: 1.0, edge_velocity_static: 0.1, file_name_ast_cruise: rec_ast_cruise.txt,
+    file_name_ast_path: rec_ast_path.txt, file_name_ast_tracking: rec_ast_tracking.txt,
+    file_name_bazier_in: bazier_in.txt, file_name_bazier_out: bazier_out.txt, file_name_controller: rec_controller.txt,
+    file_name_edgemap: edgemap_out.txt, file_name_edgepath: edgepath_out.txt, file_name_lqr_plist: params/plist.txt,
+    file_name_map: rec_map.txt, file_name_path: rec_path.txt, file_name_path_env: rec_path_env.txt,
+    file_name_prefix: /home/exbot/workspace/hehualin_ws/IARC_BigSim/data/, file_name_task: rec_task.txt,
+    file_name_task_env: rec_task_env.txt, file_name_timecost: timecost_out.txt, file_name_tracking: rec_tracking.txt,
+    interaction_height: 1.0, list_capacity: 5000, loop_id: 2, loop_id_str: '002',
+    loop_param_k: param1, m: 3, map_memory_org_x: -10.0, map_memory_org_y: -10.0,
+    map_memory_step_x: 1.0, map_memory_step_y: 1.0, n: 9, obstacle_time_forget_ms: 10000,
+    period_turn_ms: 20000, radius_collision: 1.0, radius_lidar: 5.0, radius_neary: 15.0,
+    radius_safe: 2.0, ramda_cruise: 0.2, ramda_m: 2.0, ramda_m_dis: 0.0, ramda_m_i_op: 1.0,
+    ramda_o: 0.0, ramda_o_a: 1.0, ramda_o_s: 0.0, ramda_t: 10.0, ramda_t_A: 1.0, ramda_t_E: -1,
+    ramda_t_S: 1, ramda_t_SAE: 1.0, ramda_t_theta: 0.5, ramda_t_y: 1.0, ros_rate_cruise: 5,
+    ros_rate_decision: 5, ros_rate_path: 15, ros_rate_tracking: 50, str_arena_frame: /arena_frame,
+    target_time_forget_ms: 40000, taskslist_capacity: 50, time_cruise_det_ms: 8000,
+    time_offset_ms: 200, time_turn_180_ms: 2600, time_turn_45_ms: 650, time_turn_distinguish_ms: 1000,
+    tree_search_gama: 0.8, tree_search_gama_distance: 0.01, tree_search_gama_inner: 0.01,
+    tree_search_gama_theta: 0.01, tree_search_max_depth: 0, tree_search_max_target_counts: 4,
+    velocity_mav_max: 2.0, velocity_obs: 0.33, velocity_tgt: 0.33}
+param2:
+  '001': {angle_field_rad: 2.0943951023931953, arena_size: 20.0, const_tf: 0.33, cruise_circular_sample_count: 10,
+    cruise_height: 2.0, cruise_velocity: 1.0, edge_angle_de: 0.7853981633974483, edge_angle_limited: 1.5707963267948966,
+    edge_bazier_rate: 0.1, edge_coef_angle: 0.001, edge_nosolution_jump: 100000, edge_num_direction: 8,
+    edge_time_one_edge: 1.0, edge_velocity_static: 0.1, file_name_ast_cruise: rec_ast_cruise.txt,
+    file_name_ast_path: rec_ast_path.txt, file_name_ast_tracking: rec_ast_tracking.txt,
+    file_name_bazier_in: bazier_in.txt, file_name_bazier_out: bazier_out.txt, file_name_controller: rec_controller.txt,
+    file_name_edgemap: edgemap_out.txt, file_name_edgepath: edgepath_out.txt, file_name_lqr_plist: params/plist.txt,
+    file_name_map: rec_map.txt, file_name_path: rec_path.txt, file_name_path_env: rec_path_env.txt,
+    file_name_prefix: /home/exbot/workspace/hehualin_ws/IARC_BigSim/data/, file_name_task: rec_task.txt,
+    file_name_task_env: rec_task_env.txt, file_name_timecost: timecost_out.txt, file_name_tracking: rec_tracking.txt,
+    interaction_height: 1.0, list_capacity: 5000, loop_id: 1, loop_id_str: '001',
+    loop_param_k: param2, m: 3, map_memory_org_x: -10.0, map_memory_org_y: -10.0,
+    map_memory_step_x: 1.0, map_memory_step_y: 1.0, n: 9, obstacle_time_forget_ms: 10000,
+    period_turn_ms: 20000, radius_collision: 1.0, radius_lidar: 5.0, radius_neary: 15.0,
+    radius_safe: 2.0, ramda_cruise: 0.2, ramda_m: 2.0, ramda_m_dis: 0.0, ramda_m_i_op: 1.0,
+    ramda_o: 0.0, ramda_o_a: 1.0, ramda_o_s: 0.0, ramda_t: 10.0, ramda_t_A: 1.0, ramda_t_E: -1,
+    ramda_t_S: 1, ramda_t_SAE: 1.0, ramda_t_theta: 0.5, ramda_t_y: 1.0, ros_rate_cruise: 5,
+    ros_rate_decision: 5, ros_rate_path: 15, ros_rate_tracking: 50, str_arena_frame: /arena_frame,
+    target_time_forget_ms: 40000, taskslist_capacity: 50, time_cruise_det_ms: 8000,
+    time_offset_ms: 1000, time_turn_180_ms: 2600, time_turn_45_ms: 650, time_turn_distinguish_ms: 1000,
+    tree_search_gama: 0.8, tree_search_gama_distance: 0.01, tree_search_gama_inner: 0.01,
+    tree_search_gama_theta: 0.01, tree_search_max_depth: 0, tree_search_max_target_counts: 4,
+    velocity_mav_max: 2.0, velocity_obs: 0.33, velocity_tgt: 0.33}
+  '002': {angle_field_rad: 2.0943951023931953, arena_size: 20.0, const_tf: 0.33, cruise_circular_sample_count: 10,
+    cruise_height: 2.0, cruise_velocity: 1.0, edge_angle_de: 0.7853981633974483, edge_angle_limited: 1.5707963267948966,
+    edge_bazier_rate: 0.1, edge_coef_angle: 0.001, edge_nosolution_jump: 100000, edge_num_direction: 8,
+    edge_time_one_edge: 1.0, edge_velocity_static: 0.1, file_name_ast_cruise: rec_ast_cruise.txt,
+    file_name_ast_path: rec_ast_path.txt, file_name_ast_tracking: rec_ast_tracking.txt,
+    file_name_bazier_in: bazier_in.txt, file_name_bazier_out: bazier_out.txt, file_name_controller: rec_controller.txt,
+    file_name_edgemap: edgemap_out.txt, file_name_edgepath: edgepath_out.txt, file_name_lqr_plist: params/plist.txt,
+    file_name_map: rec_map.txt, file_name_path: rec_path.txt, file_name_path_env: rec_path_env.txt,
+    file_name_prefix: /home/exbot/workspace/hehualin_ws/IARC_BigSim/data/, file_name_task: rec_task.txt,
+    file_name_task_env: rec_task_env.txt, file_name_timecost: timecost_out.txt, file_name_tracking: rec_tracking.txt,
+    interaction_height: 1.0, list_capacity: 5000, loop_id: 2, loop_id_str: '002',
+    loop_param_k: param2, m: 3, map_memory_org_x: -10.0, map_memory_org_y: -10.0,
+    map_memory_step_x: 1.0, map_memory_step_y: 1.0, n: 9, obstacle_time_forget_ms: 10000,
+    period_turn_ms: 20000, radius_collision: 1.0, radius_lidar: 5.0, radius_neary: 15.0,
+    radius_safe: 2.0, ramda_cruise: 0.2, ramda_m: 2.0, ramda_m_dis: 0.0, ramda_m_i_op: 1.0,
+    ramda_o: 0.0, ramda_o_a: 1.0, ramda_o_s: 0.0, ramda_t: 10.0, ramda_t_A: 1.0, ramda_t_E: -1,
+    ramda_t_S: 1, ramda_t_SAE: 1.0, ramda_t_theta: 0.5, ramda_t_y: 1.0, ros_rate_cruise: 5,
+    ros_rate_decision: 5, ros_rate_path: 15, ros_rate_tracking: 50, str_arena_frame: /arena_frame,
+    target_time_forget_ms: 40000, taskslist_capacity: 50, time_cruise_det_ms: 8000,
+    time_offset_ms: 1000, time_turn_180_ms: 2600, time_turn_45_ms: 650, time_turn_distinguish_ms: 1000,
+    tree_search_gama: 0.8, tree_search_gama_distance: 0.01, tree_search_gama_inner: 0.01,
+    tree_search_gama_theta: 0.01, tree_search_max_depth: 0, tree_search_max_target_counts: 4,
+    velocity_mav_max: 2.0, velocity_obs: 0.33, velocity_tgt: 0.33}
+param3:
+  '001': {angle_field_rad: 2.0943951023931953, arena_size: 20.0, const_tf: 0.33, cruise_circular_sample_count: 10,
+    cruise_height: 2.0, cruise_velocity: 1.0, edge_angle_de: 0.7853981633974483, edge_angle_limited: 1.5707963267948966,
+    edge_bazier_rate: 0.1, edge_coef_angle: 0.001, edge_nosolution_jump: 100000, edge_num_direction: 8,
+    edge_time_one_edge: 1.0, edge_velocity_static: 0.1, file_name_ast_cruise: rec_ast_cruise.txt,
+    file_name_ast_path: rec_ast_path.txt, file_name_ast_tracking: rec_ast_tracking.txt,
+    file_name_bazier_in: bazier_in.txt, file_name_bazier_out: bazier_out.txt, file_name_controller: rec_controller.txt,
+    file_name_edgemap: edgemap_out.txt, file_name_edgepath: edgepath_out.txt, file_name_lqr_plist: params/plist.txt,
+    file_name_map: rec_map.txt, file_name_path: rec_path.txt, file_name_path_env: rec_path_env.txt,
+    file_name_prefix: /home/exbot/workspace/hehualin_ws/IARC_BigSim/data/, file_name_task: rec_task.txt,
+    file_name_task_env: rec_task_env.txt, file_name_timecost: timecost_out.txt, file_name_tracking: rec_tracking.txt,
+    interaction_height: 1.0, list_capacity: 5000, loop_id: 1, loop_id_str: '001',
+    loop_param_k: param3, m: 3, map_memory_org_x: -10.0, map_memory_org_y: -10.0,
+    map_memory_step_x: 1.0, map_memory_step_y: 1.0, n: 9, obstacle_time_forget_ms: 10000,
+    period_turn_ms: 20000, radius_collision: 1.0, radius_lidar: 5.0, radius_neary: 15.0,
+    radius_safe: 2.0, ramda_cruise: 0.2, ramda_m: 2.0, ramda_m_dis: 0.0, ramda_m_i_op: 1.0,
+    ramda_o: 0.0, ramda_o_a: 1.0, ramda_o_s: 0.0, ramda_t: 10.0, ramda_t_A: 1.0, ramda_t_E: -1,
+    ramda_t_S: 1, ramda_t_SAE: 1.0, ramda_t_theta: 0.5, ramda_t_y: 1.0, ros_rate_cruise: 5,
+    ros_rate_decision: 5, ros_rate_path: 15, ros_rate_tracking: 50, str_arena_frame: /arena_frame,
+    target_time_forget_ms: 40000, taskslist_capacity: 50, time_cruise_det_ms: 8000,
+    time_offset_ms: 2000, time_turn_180_ms: 2600, time_turn_45_ms: 650, time_turn_distinguish_ms: 1000,
+    tree_search_gama: 0.8, tree_search_gama_distance: 0.01, tree_search_gama_inner: 0.01,
+    tree_search_gama_theta: 0.01, tree_search_max_depth: 0, tree_search_max_target_counts: 4,
+    velocity_mav_max: 2.0, velocity_obs: 0.33, velocity_tgt: 0.33}
+period_turn_ms: 20000
+radius_collision: 1.0
+radius_lidar: 5.0
+radius_neary: 15.0
+radius_safe: 2.0
+ramda_cruise: 0.2
+ramda_m: 2.0
+ramda_m_dis: 0.0
+ramda_m_i_op: 1.0
+ramda_o: 0.0
+ramda_o_a: 1.0
+ramda_o_s: 0.0
+ramda_t: 10.0
+ramda_t_A: 1.0
+ramda_t_E: -1
+ramda_t_S: 1
+ramda_t_SAE: 1.0
+ramda_t_theta: 0.5
+ramda_t_y: 1.0
+ros_rate_cruise: 5
+ros_rate_decision: 5
+ros_rate_path: 15
+ros_rate_tracking: 50
+rosdistro: 'indigo
+
+  '
+roslaunch:
+  uris: {host_hehualin__33252: 'http://hehualin:33252/', host_hehualin__33259: 'http://hehualin:33259/',
+    host_hehualin__33573: 'http://hehualin:33573/', host_hehualin__34608: 'http://hehualin:34608/',
+    host_hehualin__34757: 'http://hehualin:34757/', host_hehualin__35078: 'http://hehualin:35078/',
+    host_hehualin__35377: 'http://hehualin:35377/', host_hehualin__35387: 'http://hehualin:35387/',
+    host_hehualin__36458: 'http://hehualin:36458/', host_hehualin__36866: 'http://hehualin:36866/',
+    host_hehualin__37050: 'http://hehualin:37050/', host_hehualin__37383: 'http://hehualin:37383/',
+    host_hehualin__37517: 'http://hehualin:37517/', host_hehualin__37543: 'http://hehualin:37543/',
+    host_hehualin__37867: 'http://hehualin:37867/', host_hehualin__37962: 'http://hehualin:37962/',
+    host_hehualin__38360: 'http://hehualin:38360/', host_hehualin__38590: 'http://hehualin:38590/',
+    host_hehualin__38812: 'http://hehualin:38812/', host_hehualin__39178: 'http://hehualin:39178/',
+    host_hehualin__39492: 'http://hehualin:39492/', host_hehualin__39553: 'http://hehualin:39553/',
+    host_hehualin__39594: 'http://hehualin:39594/', host_hehualin__39610: 'http://hehualin:39610/',
+    host_hehualin__39833: 'http://hehualin:39833/', host_hehualin__40749: 'http://hehualin:40749/',
+    host_hehualin__41211: 'http://hehualin:41211/', host_hehualin__41317: 'http://hehualin:41317/',
+    host_hehualin__41416: 'http://hehualin:41416/', host_hehualin__42411: 'http://hehualin:42411/',
+    host_hehualin__42430: 'http://hehualin:42430/', host_hehualin__42907: 'http://hehualin:42907/',
+    host_hehualin__43071: 'http://hehualin:43071/', host_hehualin__43407: 'http://hehualin:43407/',
+    host_hehualin__43616: 'http://hehualin:43616/', host_hehualin__44152: 'http://hehualin:44152/',
+    host_hehualin__44203: 'http://hehualin:44203/', host_hehualin__44801: 'http://hehualin:44801/',
+    host_hehualin__44972: 'http://hehualin:44972/', host_hehualin__45037: 'http://hehualin:45037/',
+    host_hehualin__45141: 'http://hehualin:45141/', host_hehualin__46333: 'http://hehualin:46333/',
+    host_hehualin__46862: 'http://hehualin:46862/', host_hehualin__46967: 'http://hehualin:46967/',
+    host_hehualin__47019: 'http://hehualin:47019/', host_hehualin__47284: 'http://hehualin:47284/',
+    host_hehualin__47418: 'http://hehualin:47418/', host_hehualin__47792: 'http://hehualin:47792/',
+    host_hehualin__48065: 'http://hehualin:48065/', host_hehualin__48498: 'http://hehualin:48498/',
+    host_hehualin__48723: 'http://hehualin:48723/', host_hehualin__49556: 'http://hehualin:49556/',
+    host_hehualin__49657: 'http://hehualin:49657/', host_hehualin__49692: 'http://hehualin:49692/',
+    host_hehualin__49775: 'http://hehualin:49775/', host_hehualin__49952: 'http://hehualin:49952/',
+    host_hehualin__50334: 'http://hehualin:50334/', host_hehualin__50731: 'http://hehualin:50731/',
+    host_hehualin__51117: 'http://hehualin:51117/', host_hehualin__51574: 'http://hehualin:51574/',
+    host_hehualin__52721: 'http://hehualin:52721/', host_hehualin__52891: 'http://hehualin:52891/',
+    host_hehualin__53298: 'http://hehualin:53298/', host_hehualin__53581: 'http://hehualin:53581/',
+    host_hehualin__53901: 'http://hehualin:53901/', host_hehualin__54014: 'http://hehualin:54014/',
+    host_hehualin__54819: 'http://hehualin:54819/', host_hehualin__54862: 'http://hehualin:54862/',
+    host_hehualin__54954: 'http://hehualin:54954/', host_hehualin__55240: 'http://hehualin:55240/',
+    host_hehualin__56431: 'http://hehualin:56431/', host_hehualin__56468: 'http://hehualin:56468/',
+    host_hehualin__56789: 'http://hehualin:56789/', host_hehualin__57713: 'http://hehualin:57713/',
+    host_hehualin__58086: 'http://hehualin:58086/', host_hehualin__58102: 'http://hehualin:58102/',
+    host_hehualin__58277: 'http://hehualin:58277/', host_hehualin__58669: 'http://hehualin:58669/',
+    host_hehualin__58843: 'http://hehualin:58843/', host_hehualin__59182: 'http://hehualin:59182/',
+    host_hehualin__59322: 'http://hehualin:59322/', host_hehualin__59543: 'http://hehualin:59543/',
+    host_hehualin__59696: 'http://hehualin:59696/', host_hehualin__60096: 'http://hehualin:60096/',
+    host_hehualin__60617: 'http://hehualin:60617/'}
+rosversion: '1.11.10
+
+  '
+run_id: 190f3652-50ed-11e7-a552-74e543ba7434
+str_arena_frame: /arena_frame
+target_time_forget_ms: 40000
+taskslist_capacity: 50
+time_cruise_det_ms: 8000
+time_offset_ms: 200
+time_turn_180_ms: 2600
+time_turn_45_ms: 650
+time_turn_distinguish_ms: 1000
+tree_search_gama: 0.8
+tree_search_gama_distance: 0.01
+tree_search_gama_inner: 0.01
+tree_search_gama_theta: 0.01
+tree_search_max_depth: 0
+tree_search_max_target_counts: 4
+try001: {angle_field_rad: 2.0943951023931953, arena_size: 20.0, const_tf: 0.33, cruise_circular_sample_count: 10,
+  cruise_height: 2.0, cruise_velocity: 1.0, edge_angle_de: 0.7853981633974483, edge_angle_limited: 1.5707963267948966,
+  edge_bazier_rate: 0.1, edge_coef_angle: 0.001, edge_nosolution_jump: 1e5, edge_num_direction: 8,
+  edge_time_one_edge: 1.0, edge_velocity_static: 0.1, file_name_ast_cruise: rec_ast_path.txt,
+  file_name_ast_path: rec_ast_path.txt, file_name_ast_tracking: rec_ast_tracking.txt,
+  file_name_bazier_in: bazier_in.txt, file_name_bazier_out: bazier_out.txt, file_name_controller: rec_controller.txt,
+  file_name_edgemap: edgemap_out.txt, file_name_edgepath: edgepath_out.txt, file_name_lqr_plist: params/plist.txt,
+  file_name_map: rec_map.txt, file_name_path: rec_path.txt, file_name_path_env: rec_path_env.txt,
+  file_name_prefix: /home/exbot/workspace/hehualin_ws/IARC_BigSim/src/iarc_arena_simulator/../../data/,
+  file_name_task: rec_task.txt, file_name_task_env: rec_task_env.txt, file_name_timecost: timecost_out.txt,
+  file_name_tracking: rec_tracking.txt, interaction_height: 1.0, list_capacity: 5000,
+  loop_id: 1, loop_id_str: '001', loop_param_k: test, m: 3, map_memory_org_x: -10.0,
+  map_memory_org_y: -10.0, map_memory_step_x: 1.0, map_memory_step_y: 1.0, n: 9, obstacle_time_forget_ms: 10000,
+  period_turn_ms: 20000, radius_collision: 1.0, radius_lidar: 5.0, radius_neary: 15.0,
+  radius_safe: 2.0, ramda_cruise: 0.2, ramda_m: 2.0, ramda_m_dis: 0.0, ramda_m_i_op: 1.0,
+  ramda_o: 0.0, ramda_o_a: 1.0, ramda_o_s: 0.0, ramda_t: 10.0, ramda_t_A: 1.0, ramda_t_E: -1,
+  ramda_t_S: 1, ramda_t_SAE: 1.0, ramda_t_theta: 0.5, ramda_t_y: 1.0, ros_rate_cruise: 5,
+  ros_rate_decision: 5, ros_rate_path: 15, ros_rate_tracking: 50, str_arena_frame: /arena_frame,
+  target_time_forget_ms: 40000, taskslist_capacity: 50, time_cruise_det_ms: 8000,
+  time_turn_180_ms: 2600, time_turn_45_ms: 650, time_turn_distinguish_ms: 1000, tree_search_gama: 0.8,
+  tree_search_gama_distance: 0.01, tree_search_gama_inner: 0.01, tree_search_gama_theta: 0.01,
+  tree_search_max_depth: 0, tree_search_max_target_counts: 4, velocity_mav_max: 2.0,
+  velocity_obs: 0.33, velocity_tgt: 0.33}
+velocity_mav_max: 2.0
+velocity_obs: 0.33
+velocity_tgt: 0.33

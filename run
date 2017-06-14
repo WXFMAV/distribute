@@ -38,19 +38,20 @@ case $1 in
         catkin_make
         for i in `seq 1000`
         do
-            for k in `seq 20`
+            for k in `ls $path_now/src/iarc_arena_simulator/launch`
             do
-                if [ ! -d $path_now"/src/iarc_arena_simulator/launch/param"$k ]; then
-                    break 1
+                if [ ! -d $path_now"/src/iarc_arena_simulator/launch/"$k ]; then
+                    continue
                 fi
+                echo $k           
 
                 if [ "$ctrl_c_pressed" = "1" ]; then
                     echo "quit for ctrl+c pressed"
                     exit 1
                 fi
 
+                path_param_k=$path_now"/src/iarc_arena_simulator/launch/"$k
                 
-                path_param_k=$path_now"/src/iarc_arena_simulator/launch/param"$k
                 path_param_loop_yaml=$path_param_k"/param_loop.yaml"
                 path_param_yaml=$path_param_k"/param.yaml"
                 path_readme_md=$path_param_k"/readme.md"
@@ -58,7 +59,7 @@ case $1 in
                 launch_package="iarc_arena_simulator"
                 launch_file="simulator_bigdata.launch"
 
-                loop_param_k="param"$k
+                loop_param_k=$k
                 mkdir -p $path_data$loop_param_k
 
                 last_id=0
