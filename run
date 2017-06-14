@@ -36,9 +36,9 @@ case $1 in
         source me
         catkin_make iarc_arena_simulator_generate_messages
         catkin_make
-        for i in `seq 2`
+        for i in `seq 1000`
         do
-            for k in `seq 3`
+            for k in `seq 20`
             do
                 if [ ! -d $path_now"/src/iarc_arena_simulator/launch/param"$k ]; then
                     break 1
