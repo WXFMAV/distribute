@@ -10,7 +10,7 @@ Socket(s):             1
 CPU 系列：          21
 型号：              16
 步进：              1
-CPU MHz：             1400.000
+CPU MHz：             1900.000
 BogoMIPS:              3793.28
 虚拟化：           AMD-V
 L1d 缓存：          16K
