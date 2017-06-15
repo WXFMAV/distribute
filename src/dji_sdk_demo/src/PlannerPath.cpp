@@ -271,12 +271,13 @@ int PlannerPath::plan_PureTracking(iarc_arena_simulator::IARCWaypointsList &wpli
     wp.robot_id = robot_id::robot_arena;
     wp.robot_cmd = robotcmd_kind::turn_none;
 
+    /*
     if(_fp_path_env != NULL){
     	fprintf(_fp_path_env, "\nPlanPath\n");
     	fprintf(_fp_path_env, "time= %d taskseq= %d tasktype= %s robotid= %d cmdtype= %s turntime=%d\n",
     			arena_time_now(), task.task_seq, ::str_task_type[task.task_type], task.robot_id, ::str_kind_turn[task.robot_cmd], get_time_sendcmd(task));
     }
-
+*/
     switch(task.task_type)
     {
     case type_hover:
@@ -554,14 +555,14 @@ bool PlannerPath::require_generate(double &dst_x, double &dst_y, double &dst_z, 
 	bool should_replan = true;
 	uint32_t time_now =arena_time_now();
 	IARCTask task= get_task_now();
-
+/*
     if(_fp_path_env != NULL){
     	fprintf(_fp_path_env, "\nPlanPath\n");
     	fprintf(_fp_path_env, "time= %d taskseq= %d tasktype= %s robotid= %d cmdtype= %s turntime=%d\n",
     			arena_time_now(), task.task_seq, ::str_task_type[task.task_type], task.robot_id, ::str_kind_turn[task.robot_cmd], get_time_sendcmd(task));
     	//LOG(INFO)<<"plan path " << arena_time_now() <<" "<<  task.task_seq << " "<< ::str_task_type[task.task_type] <<" "<<  task.robot_id <<" "<< ::str_kind_turn[task.robot_cmd] <<" "<< get_time_sendcmd(task) ;
     }
-
+*/
 	//type_hover, type_reach, type_cruise, type_follow, type_interact,
 	switch( task.task_type)
 	{
@@ -707,6 +708,10 @@ int PlannerPath::plan_djikstra(iarc_arena_simulator::IARCWaypointsList &wplist)
 
 	if(require_generate(dst_x, dst_y, dst_z, dst_time, dst_robotid, dst_turncmd) == true){
 
+		if(_fp_path_env != NULL){
+			fprintf(_fp_path_env, "%u %.2lf %.2lf %.2lf %u ",arena_time_now(), dst_x, dst_y, dst_z, (unsigned int)(dst_time * 1000.0));
+		}
+
 		double time_start =( (double)(time_now_ms))/ 1000.0;
 		LOG(INFO) <<" timenow= "<<arena_time_now()<<" "<<dst_x<<" "<<dst_y<<" "<<dst_z
 				<<" dst_time= "<<dst_time<<" time_start= "<<time_start;
@@ -733,13 +738,7 @@ int PlannerPath::plan_djikstra(iarc_arena_simulator::IARCWaypointsList &wplist)
 
 
 	    if(_fp_path_env != NULL){
-	    	fprintf(_fp_path_env, "nPaths= %d timenow=%d\n", wplist.list.size(), time_now_ms);
-	    	for(int k = 0; k< wplist.list.size(); k++){
-	    		if( k == 0 || k == wplist.list.size()-1 || wplist.list[k].robot_cmd != turn_none){
-	    			fprintf(_fp_path_env, "k= %d seq= %d time= %d robotid= %d cmd= %s\n",k, wplist.list[k].seq, wplist.list[k].tms,
-	    					wplist.list[k].robot_id, ::str_kind_turn[wplist.list[k].robot_cmd]);
-	    		}
-	    	}
+	    	fprintf(_fp_path_env, "%d %d %u\n", wplist.list.size(), wplist.list.size() >0 ? wplist.list[0].seq : 0, time_now_ms);
 	    }
 
 	}

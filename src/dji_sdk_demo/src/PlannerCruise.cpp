@@ -241,15 +241,7 @@ int PlannerCruise::generate_list(std::vector<iarc_arena_simulator::IARCTask> &ta
 {
     if ( _fp_task_env != NULL){
         uint32_t time_now = arena_time_now();
-        fprintf(_fp_task_env, "\ngenerate task:\ntime= %d loop= %d  mav( %.2lf %.2lf %.2lf)\n", time_now,  _plan_seq, _quad_status.x, _quad_status.y, _quad_status.z);
-        fprintf(_fp_task_env, "ntgt= %d\n", _tgt_status.size());
-        for(int k = 0; k < _tgt_status.size(); k++){
-            fprintf(_fp_task_env, "(%d %.2lf %.2lf %.2lf %f) \n", _tgt_status[k].id, _tgt_status[k].x, _tgt_status[k].y, _tgt_status[k].theta*180.0/ M_PI, _tgt_status[k].belief_rate);
-        }
-        fprintf(_fp_task_env, "nobs= %d\n", _obs_status.size());
-        for(int k = 0; k < _obs_status.size(); k++){
-            fprintf(_fp_task_env, "(%.2lf %.2lf %.2lf) \n", _obs_status[k].x, _obs_status[k].y, _obs_status[k].theta);
-        }
+        fprintf(_fp_task_env, "%d %u %d %d ", _plan_seq,  time_now, _tgt_status.size(), _obs_status.size());
     }
 
     _tree.clear();
@@ -281,7 +273,7 @@ int PlannerCruise::generate_list(std::vector<iarc_arena_simulator::IARCTask> &ta
 
     _tree.push_back(root_task);
 
-    save_map();
+    //save_map();
 
     //tree_search(0, 1.0);
    // LOG(ERROR)<<"Planning by simple";
@@ -318,7 +310,7 @@ int PlannerCruise::generate_list(std::vector<iarc_arena_simulator::IARCTask> &ta
     }
 
     if ( _fp_task_env != NULL){
-		fprintf(_fp_task_env, "ntsk= %d\n", taskslist.size());
+		fprintf(_fp_task_env, " %d %d %u\n",  taskslist.size(), taskslist.size() >0 ? taskslist[0].task_seq : 0,  arena_time_now());
 	}
 
     if(!taskslist.size()==0)
@@ -327,11 +319,6 @@ int PlannerCruise::generate_list(std::vector<iarc_arena_simulator::IARCTask> &ta
     		LOG(INFO)<<"tasklist: "<<taskslist[k].task_seq<<" id="<<taskslist[k].robot_id<<" cmd="<<::str_kind_turn[taskslist[k].robot_cmd]
     				<<" type="<<::str_task_type[taskslist[k].task_type]<<" timeend="<<taskslist[k].time_end
 					<<" value="<<taskslist[k].task_value;
-    		if( _fp_task_env != NULL){
-    			  uint32_t time_action = get_time_sendcmd(taskslist[k]);
-
-    			fprintf(_fp_task_env, "seq= %d, robotid= %d cmd= %s timeturn= %d\n", taskslist[k].task_seq, taskslist[k].robot_id, ::str_kind_turn[taskslist[k].robot_cmd], time_action);
-    		}
     	}
         LOG(INFO) << "task list generated. ok";
 

@@ -86,7 +86,12 @@ namespace PARAM{
     aux_define_param(double,     edge_angle_de)
     aux_define_param(int,        loop_id)
     aux_define_param(int,        time_offset_ms)
-
+    aux_define_param(double,     rand_tgt_average)
+    aux_define_param(double,     rand_tgt_gauss)
+    aux_define_param(double,     rand_tgt_gauss_variance)
+    aux_define_param(double,     rand_obs_average)
+    aux_define_param(double,     rand_obs_gauss)
+    aux_define_param(double,     rand_obs_gauss_variance)
     aux_define_param(std::string, str_arena_frame)
     aux_define_param(std::string, file_name_prefix)
     aux_define_param(std::string, loop_param_k)
@@ -108,6 +113,10 @@ namespace PARAM{
     aux_define_param_filename(std::string,file_name_ast_cruise)
     aux_define_param_filename(std::string,file_name_ast_path)
     aux_define_param_filename(std::string,file_name_ast_tracking)
+    aux_define_param_filename(std::string,file_name_arena_info)
+    aux_define_param_filename(std::string,file_name_arena_cmd_received)
+    aux_define_param_filename(std::string,file_name_arena_cmd_sent)
+    aux_define_param_filename(std::string,file_name_health)
 
 int load_params(const ros::NodeHandle &nh){
 
@@ -175,6 +184,12 @@ int load_params(const ros::NodeHandle &nh){
     aux_load_param(nh, edge_angle_de)
     aux_load_param(nh, loop_id)
     aux_load_param(nh, time_offset_ms)
+    aux_load_param(nh, rand_tgt_average)
+    aux_load_param(nh, rand_tgt_gauss)
+    aux_load_param(nh, rand_tgt_gauss_variance)
+    aux_load_param(nh, rand_obs_average)
+    aux_load_param(nh, rand_obs_gauss)
+    aux_load_param(nh, rand_obs_gauss_variance)
 
     aux_load_param(nh, str_arena_frame)
     aux_load_param(nh, file_name_prefix)
@@ -197,6 +212,11 @@ int load_params(const ros::NodeHandle &nh){
     aux_load_param_filename(nh, file_name_ast_cruise)
     aux_load_param_filename(nh, file_name_ast_path)
     aux_load_param_filename(nh, file_name_ast_tracking)
+    aux_load_param_filename(nh, file_name_arena_info)
+    aux_load_param_filename(nh, file_name_arena_cmd_received)
+    aux_load_param_filename(nh, file_name_arena_cmd_sent)
+    aux_load_param_filename(nh, file_name_health)
+
     return 0;
 }
 

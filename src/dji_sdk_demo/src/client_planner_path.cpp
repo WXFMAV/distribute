@@ -67,9 +67,10 @@ int main(int argc, char **argv)
 
     ros::Rate r0(PARAM::ros_rate_path);
     int cnt=0;
-
+    nh.setParam("health_path_on", 1);
     while(ros::ok())
     {
+	    uint32_t health_t1 = arena_time_now();
             cnt++;
             LOG(INFO) <<"loop cnt=" <<cnt;
 
@@ -86,6 +87,12 @@ int main(int argc, char **argv)
             thePath.get_array_targets(tgt);
             virtual_targets_pub.publish(tgt);
 
+            uint32_t health_t2 = arena_time_now();
+            if(health_t2 -health_t1 > 1000.0 / PARAM::ros_rate_path ){
+            	int timeup = 0;
+            	nh.getParam("health_path_timeup", timeup);
+            	nh.setParam("health_path_timeup", timeup+1);
+            }
             ros::spinOnce();
             r0.sleep();
     }
@@ -93,7 +100,7 @@ int main(int argc, char **argv)
 	LOG(INFO) << "quit!";
 	printf("Quit Path!\n");
 
-
+   	nh.setParam("health_path_on", 0);
     return 0;
 }
 

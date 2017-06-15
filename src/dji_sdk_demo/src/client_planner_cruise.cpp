@@ -77,11 +77,12 @@ int main(int argc, char **argv)
     sensor_msgs::Range rg;
 
     ros::Rate r0(PARAM::ros_rate_cruise);
-
     int cnt=0;
 
+   nh.setParam("health_cruise_on", 1);
     while(ros::ok())
     {
+    	    uint32_t health_t1 = arena_time_now();
             cnt++;
             LOG(INFO) <<"loop cnt=" <<cnt;
 
@@ -121,13 +122,19 @@ int main(int argc, char **argv)
             	}
             }
 
+            uint32_t health_t2 = arena_time_now();
+            if(health_t2 -health_t1 > 1000.0 / PARAM::ros_rate_cruise ){
+            	int timeup = 0;
+            	nh.getParam("health_cruise_timeup", timeup);
+            	nh.setParam("health_cruise_timeup", timeup+1);
+            }
             ros::spinOnce();
             r0.sleep();
     }
 
     LOG(INFO) << "quit!";
    	printf("Quit Cruise!\n");
-
+   	nh.setParam("health_cruise_on", 0);
 
     return 0;
 }

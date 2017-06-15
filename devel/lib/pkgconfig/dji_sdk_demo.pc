@@ -1,0 +1,8 @@
+prefix=/home/exbot/workspace/hehualin_ws/distribute/devel
+
+Name: dji_sdk_demo
+Description: Description of dji_sdk_demo
+Version: 0.1.6
+Cflags: 
+Libs: -L/home/exbot/workspace/hehualin_ws/distribute/devel/lib 
+Requires: 

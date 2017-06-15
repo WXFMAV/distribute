@@ -1,0 +1,23 @@
+(cl:defpackage iarc_arena_simulator-msg
+  (:use )
+  (:export
+   "<IARCQUADSTATUS>"
+   "IARCQUADSTATUS"
+   "<IARCWAYPOINT>"
+   "IARCWAYPOINT"
+   "<IARCTASK>"
+   "IARCTASK"
+   "<IARCCOMMAND>"
+   "IARCCOMMAND"
+   "<IARCWAYPOINTSLIST>"
+   "IARCWAYPOINTSLIST"
+   "<IARCCOMMANDS>"
+   "IARCCOMMANDS"
+   "<IARCOBSTACLES>"
+   "IARCOBSTACLES"
+   "<IARCTARGETS>"
+   "IARCTARGETS"
+   "<IARCTASKSLIST>"
+   "IARCTASKSLIST"
+  ))
+

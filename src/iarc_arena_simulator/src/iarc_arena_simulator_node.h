@@ -28,8 +28,8 @@
 //#define quit_when_collision
 
 static const char* str_kind_turn[3]={"turn_none","turn_180","turn_45"};
-static std::string file_name_arena_info =  ros::package::getPath("dji_sdk_demo") + "/../../build/test_results"+"/rec_arena_info.txt";
-static std::string file_name_arena_cmd_received =  ros::package::getPath("dji_sdk_demo") + "/../../build/test_results"+"/rec_arena_cmd_received.txt";
+//static std::string file_name_arena_info =  ros::package::getPath("dji_sdk_demo") + "/../../build/test_results"+"/rec_arena_info.txt";
+//static std::string file_name_arena_cmd_received =  ros::package::getPath("dji_sdk_demo") + "/../../build/test_results"+"/rec_arena_cmd_received.txt";
 
 #define PI 3.141592653897932384626
 

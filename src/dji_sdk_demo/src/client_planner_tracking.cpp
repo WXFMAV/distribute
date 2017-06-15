@@ -78,10 +78,10 @@ int main(int argc, char **argv)
 	int cnt=0;
 
 	LOG(INFO) << "ros ok=" <<ros::ok();
-
+    nh.setParam("health_tracking_on", 1);
 	while(ros::ok())
 	{
-
+	    uint32_t health_t1 = arena_time_now();
 	        cnt++;
 	        LOG(INFO) << "loop:" <<cnt;
 
@@ -116,13 +116,19 @@ int main(int argc, char **argv)
             GenerateUAVPose(&theQuad, pose);
             mav_pub.publish(pose);
 
+            uint32_t health_t2 = arena_time_now();
+            if(health_t2 -health_t1 > 1000.0 / PARAM::ros_rate_tracking){
+            	int timeup = 0;
+            	nh.getParam("health_tracking_timeup", timeup);
+            	nh.setParam("health_tracking_timeup", timeup+1);
+            }
             ros::spinOnce();
             r0.sleep();
 	}
 
 	LOG(INFO) << "quit!";
 	printf("Quit Tracking!\n");
-
+   	nh.setParam("health_tracking_on", 0);
 	return 0;
 }
 

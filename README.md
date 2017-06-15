@@ -5,4 +5,4 @@ For distribute simulation
 
 `cd distribute`
 
-`bash run`
+`bash run client`

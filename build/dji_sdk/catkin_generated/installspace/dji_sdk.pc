@@ -1,0 +1,8 @@
+prefix=/home/exbot/workspace/hehualin_ws/distribute/install
+
+Name: dji_sdk
+Description: Description of dji_sdk
+Version: 0.1.6
+Cflags: -I/home/exbot/workspace/hehualin_ws/distribute/install/include
+Libs: -L/home/exbot/workspace/hehualin_ws/distribute/install/lib 
+Requires: message_runtime actionlib actionlib_msgs geometry_msgs nav_msgs std_msgs dji_sdk_lib

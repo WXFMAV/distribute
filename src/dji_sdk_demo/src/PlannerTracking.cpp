@@ -211,9 +211,9 @@ int PlannerTracking::gen_control_cmd(IARC_COMMAND &cmd)
     LOG(INFO) <<"gen_control_cmd ok";
 
     if ( _fp_tracking != NULL){
-        fprintf(_fp_tracking, "%d %d %d %d (%.2lf, %.2lf, %.2lf) (%.2lf, %.2lf, %.2lf) (%.2lf, %.2lf, %.2lf)\
-  (%.2lf, %.2lf, %.2lf) (%.2lf, %.2lf, %.2lf) (%.2lf, %.2lf, %.2lf)\
-  (%.2lf, %.2lf, %.2lf %.2lf) id-kind(%d, %d)\n",
+        fprintf(_fp_tracking, "%d %d %d %d %.2lf  %.2lf  %.2lf %.2lf  %.2lf  %.2lf %.2lf  %.2lf  %.2lf \
+  %.2lf  %.2lf %.2lf %.2lf  %.2lf %.2lf  %.2lf %.2lf %.2lf \
+  %.2lf %.2lf  %.2lf %.2lf  %d  %d\n",
                 time_now, wp.seq,  _pos_now,  _wp_list[_pos_now % list_capacity].tms,
                 _state_x[0], _state_x[1], _state_x[2],
                 _state_x[3], _state_x[4], _state_x[5],
@@ -226,7 +226,7 @@ int PlannerTracking::gen_control_cmd(IARC_COMMAND &cmd)
     }
 
     if( _fp_controller != NULL){
-        fprintf(_fp_controller,"%d,task_seq:%d wp_pos:%d waypoint(%.2lf,%.2lf,t:%d) mav(%.2lf %.2lf) u(%.2lf %.2lf) cmd(%d, %d)\n",
+        fprintf(_fp_controller,"%d %d %d %.2lf %.2lf %d %.2lf %.2lf %.2lf %.2lf %d  %d\n",
     		time_now, task.task_seq, _pos_now, wp.x, wp.y, wp.tms,
                 _state_x[0], _state_x[1], _control_u[0], _control_u[1], cmd.robot_turn_id, cmd.robot_turn_kind);
     }

@@ -74,6 +74,12 @@ namespace PARAM{
     aux_declare_param(double,     edge_angle_de)
     aux_declare_param(int,        loop_id)
     aux_declare_param(int,        time_offset_ms)
+    aux_declare_param(double,     rand_tgt_average)
+    aux_declare_param(double,     rand_tgt_gauss)
+    aux_declare_param(double,     rand_tgt_gauss_variance)
+    aux_declare_param(double,     rand_obs_average)
+    aux_declare_param(double,     rand_obs_gauss)
+    aux_declare_param(double,     rand_obs_gauss_variance)
 
     aux_declare_param(std::string, str_arena_frame)
     aux_declare_param(std::string, file_name_prefix)
@@ -96,7 +102,10 @@ namespace PARAM{
     aux_declare_param_filename(std::string, file_name_ast_cruise)
     aux_declare_param_filename(std::string, file_name_ast_path)
     aux_declare_param_filename(std::string, file_name_ast_tracking)
-
+    aux_declare_param_filename(std::string, file_name_arena_info)
+    aux_declare_param_filename(std::string, file_name_arena_cmd_received)
+    aux_declare_param_filename(std::string, file_name_arena_cmd_sent)
+    aux_declare_param_filename(std::string, file_name_health)
 
 };
 

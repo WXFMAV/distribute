@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/exbot/workspace/hehualin_ws/distribute/src/iarc_arena_simulator/src/gauss.cpp
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+

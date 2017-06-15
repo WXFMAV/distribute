@@ -9,10 +9,9 @@ static uint32_t time_turn[N_TRG],kind_turn[N_TRG];
 static IARCQuadStatus quad_status;
 static FILE *fp=NULL;
 static FILE *fp_cmdrcv=NULL;
+static FILE *fp_cmdall=NULL;
 static geometry_msgs::Pose obs[N_OBS];
 static geometry_msgs::Pose trg[N_TRG];
-
-uint32_t TimePassedMs(ros::Time start,ros::Time now);
 
 static bool visited = false;
 uint32_t arena_time_now()
@@ -37,6 +36,7 @@ uint32_t arena_time_now()
 //    ans_nsec=now.nsec>start.nsec?now.nsec-start.nsec:now.nsec+1e9-start.nsec;
     return uint32_t(((uint64_t)ans_sec)*1000+((uint64_t)ans_nsec)/1000000);
 }
+
 void arena_set_startnow()
 {
     if (visited){
@@ -82,10 +82,35 @@ void arena_set_startnow()
     fflush(fp);
     fclose(fp);
 
+
     printf("start time seted!\n");
     visited = true;
 }
 
+double gaussrand()
+{
+    static double V1, V2, S;
+    static int phase = 0;
+    double X;
+     
+    if ( phase == 0 ) {
+        do {
+            double U1 = (double)rand() / RAND_MAX;
+            double U2 = (double)rand() / RAND_MAX;
+             
+            V1 = 2 * U1 - 1;
+            V2 = 2 * U2 - 1;
+            S = V1 * V1 + V2 * V2;
+        } while(S >= 1 || S == 0);
+         
+        X = V1 * sqrt(-2 * log(S) / S);
+    } else
+        X = V2 * sqrt(-2 * log(S) / S);
+         
+    phase = 1 - phase;
+ 
+    return X;
+}
 
 
 bool near_mav(uint32_t robot_id)
@@ -106,23 +131,28 @@ bool near_mav(uint32_t robot_id)
 void IARCCommand_callback(const iarc_arena_simulator::IARCCommand::ConstPtr& msg)
 {
 	//printf("msg: id:%d kind:%d\n",msg->robot_id,msg->command_kind);
-	ros::Time now=ros::Time::now();
-	uint32_t time_now=TimePassedMs(time_start,now);
+	uint32_t time_now=arena_time_now();
 	uint32_t time_add=0;
 	if(msg->command_kind==KIND_TURN_180) time_add=TIME_TURN_180;
 	else time_add=TIME_TURN_45;
 
-	      if(msg->command_kind!=KIND_TURN_NONE && near_mav(msg->robot_id)==true)
-	      {
-	            time_turn[msg->robot_id]=time_now % PERIOD_TURN;
-	            kind_turn[msg->robot_id]=msg->command_kind;
-	            if(fp_cmdrcv!=NULL)
-	            {
-	                  fprintf(fp_cmdrcv,"robot_id:%d time_turn:%d kind_turn:%d[%s]\n",msg->robot_id,time_now,msg->command_kind,str_kind_turn[msg->command_kind]);
-	                  fflush(fp_cmdrcv);
-	            }
-	      }
-	//}
+        if(msg->command_kind!=KIND_TURN_NONE){
+            if(fp_cmdall!=NULL){
+                fprintf(fp_cmdall, "%d %d %d\n",time_now, msg->robot_id, msg->command_kind);
+                fflush(fp_cmdall);
+            }
+        }
+
+        if(msg->command_kind!=KIND_TURN_NONE && near_mav(msg->robot_id)==true)
+	{
+	    time_turn[msg->robot_id]=time_now % PERIOD_TURN;
+	    kind_turn[msg->robot_id]=msg->command_kind;
+	    if(fp_cmdrcv!=NULL)
+	    {
+	       fprintf(fp_cmdrcv,"%d %d %d\n",time_now, msg->robot_id, msg->command_kind);
+	       fflush(fp_cmdrcv);
+	    }
+         }
 }
 
 void IARCQuadStatus_callback(const iarc_arena_simulator::IARCQuadStatus::ConstPtr & msg)
@@ -130,23 +160,6 @@ void IARCQuadStatus_callback(const iarc_arena_simulator::IARCQuadStatus::ConstPt
     quad_status = (*msg);
 }
 
-uint32_t TimePassedMs(ros::Time start,ros::Time now)
-{
-      if(now.sec<start.sec) return 0;
-      uint32_t ans_sec, ans_nsec;
-      ans_sec=now.sec-start.sec;
-      if(now.nsec>start.nsec)
-      {
-            ans_nsec=now.nsec-start.nsec;
-      }
-      else
-      {
-            ans_nsec=now.nsec+1e9-start.nsec;
-            ans_sec--;
-      }
-//    ans_nsec=now.nsec>start.nsec?now.nsec-start.nsec:now.nsec+1e9-start.nsec;
-      return uint32_t(((uint64_t)ans_sec)*1000+((uint64_t)ans_nsec)/1000000);
-}
 bool OutofBound(geometry_msgs::Pose pos)
 {
 	if(pos.position.x<-10.0 || pos.position.x>10.0 || pos.position.y<-10.0 || pos.position.y>10.0)
@@ -187,18 +200,24 @@ int main(int argc,char **argv)
     ros::Subscriber quad_sub =
         nh.subscribe<iarc_arena_simulator::IARCQuadStatus>("iarc_arena/IARCQuadStatus",10, IARCQuadStatus_callback);
 
-    fp=fopen(file_name_arena_info.c_str(),"w");
+    fp=fopen(PARAM::file_name_arena_info.c_str(),"w");
     if(fp==NULL)
     {
           printf("file arena_info.txt open failed!\n");
           return 0;
     }
 
-    fp_cmdrcv=fopen(file_name_arena_cmd_received.c_str(),"w");
+    fp_cmdrcv=fopen(PARAM::file_name_arena_cmd_received.c_str(),"w");
     if(fp_cmdrcv==NULL)
     {
           printf("file arena_cmd_receivd.txt open failed!\n");
           return 0;
+    }
+    fp_cmdall=fopen(PARAM::file_name_arena_cmd_sent.c_str(),"w");
+    if(fp_cmdall==NULL)
+    {
+           printf("file arena_cmd_sent.txt open failed!\n");
+           return 0;
     }
 
     srand((unsigned int)time_start.nsec);    
@@ -246,8 +265,9 @@ int main(int argc,char **argv)
 
     while(ros::ok())
     {
-        if (TimePassedMs(time_start,ros::Time::now())>600000)
+        if (arena_time_now()>600000){
            break;
+        }
         cnt++;
 
     	geometry_msgs::PoseArray obstacles;
@@ -269,7 +289,7 @@ int main(int argc,char **argv)
 				uint32_t time_add;
 
 				ros::Time now=ros::Time::now();
-				time_now=TimePassedMs(time_start,now)%PERIOD_TURN;				
+				time_now=arena_time_now()%PERIOD_TURN;				
 				if(kind_turn[k]==KIND_TURN_180)
                         {
 				      theta_add=THETA_TURN_180;
@@ -314,7 +334,7 @@ int main(int argc,char **argv)
 				//printf("%d %d %d %d %.6lf %d\n",time_now,k,kind_turn[k],time_turn[k],de,time_add);								
 				trg_theta[k]=trg_theta[k]+de;						
 
-				trg_theta[k]=trg_theta[k]+float(rand()%1001-500)/50000.0 * 3.0;					//float(rand()%1001-500)/50000.0*3.0
+				trg_theta[k]=trg_theta[k]+float(rand()%1001-500)/50000.0 * 3.0* PARAM::rand_tgt_average + PARAM::rand_tgt_gauss * gaussrand() * PARAM::rand_tgt_gauss_variance;					//float(rand()%1001-500)/50000.0*3.0
 				theta=trg_theta[k];
 						
 				trg[k].position.x=trg[k].position.x+dT*v0*cos(theta);
@@ -338,7 +358,7 @@ int main(int argc,char **argv)
 			if(!OutofBound(obs[k]))
 			{
 				float theta;
-				obs_theta[k]=obs_theta[k]+float(rand()%1001-500)/500000.0 * 5.0;
+				obs_theta[k]=obs_theta[k]+float(rand()%1001-500)/500000.0 * 5.0 * PARAM::rand_obs_average + PARAM::rand_obs_gauss * gaussrand() * PARAM::rand_obs_gauss_variance;
 				obs_theta[k]=obs_theta[k]+dT*v0/r0;
 				theta=obs_theta[k];
 
@@ -376,15 +396,17 @@ int main(int argc,char **argv)
 
     	if(fp!=NULL)
     	{
-    	      uint32_t time_now=TimePassedMs(time_start,ros::Time::now());
-    	      fprintf(fp,"%d %d (id,x,y,oz,ow):",cnt,time_now);
+    	      uint32_t time_now=arena_time_now();
+    	      fprintf(fp,"%d %u ",cnt,time_now);
+              fprintf(fp,"%u %.2lf %.2lf %.2lf %.2lf %.2lf %.2lf %.2lf %.2lf %.2lf ",quad_status.tms, quad_status.x, quad_status.y, quad_status.z,
+                          quad_status.vx, quad_status.vy, quad_status.vz,  quad_status.ax, quad_status.ay, quad_status.az); 
     	      for(int k=0; k<N_TRG; k++)
     	      {
-    	            fprintf(fp,"(%d %.2lf %.2lf %.2lf %.2lf) ",k,trg[k].position.x,trg[k].position.y,trg[k].orientation.z,trg[k].orientation.w);
+    	            fprintf(fp,"%d %.2lf %.2lf %.2lf %.2lf ",k,trg[k].position.x,trg[k].position.y,trg[k].orientation.z,trg[k].orientation.w);
     	      }
     	      for(int k=0; k<N_OBS; k++)
               {
-                    fprintf(fp,"(%d %.2lf %.2lf %.2lf %.2lf) ",k,obs[k].position.x,obs[k].position.y,obs[k].orientation.z,obs[k].orientation.w);
+                    fprintf(fp,"%d %.2lf %.2lf %.2lf %.2lf ",k,obs[k].position.x,obs[k].position.y,obs[k].orientation.z,obs[k].orientation.w);
               }
     	      fprintf(fp,"\n");
     	}
@@ -394,5 +416,29 @@ int main(int argc,char **argv)
 
     if(fp!=NULL) fclose(fp),fp=NULL;
     if(fp_cmdrcv!=NULL) fclose(fp_cmdrcv),fp_cmdrcv=NULL;
-	return 0;
+   
+    FILE* fp_health = fopen(PARAM::file_name_health.c_str(),"w");
+    if(fp_health == NULL){
+        cout<<" open health filed failed!"<<endl;
+    }
+
+    int health_cruise_on = 0;
+    int health_path_on = 0;
+    int health_tracking_on = 0;
+    int health_cruise_timeup = 0;
+    int health_path_timeup = 0;
+    int health_tracking_timeup = 0;
+
+    nh.getParam("health_cruise_on",health_cruise_on);
+    nh.getParam("health_path_on",health_path_on);
+    nh.getParam("health_tracking_on",health_tracking_on);
+    nh.getParam("health_cruise_timeup", health_cruise_timeup);
+    nh.getParam("health_path_timeup", health_path_timeup);
+    nh.getParam("health_tracking_timeup", health_tracking_timeup);
+
+    fprintf(fp_health, "%d\n%d\n%d\n%d\n%d\n%d\n", health_cruise_on, health_cruise_timeup, health_path_on, health_path_timeup, health_tracking_on, health_tracking_timeup);
+
+    fflush(fp_health);        
+    fclose(fp_health);
+    return 0;
 }

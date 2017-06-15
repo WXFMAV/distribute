@@ -1,0 +1,18 @@
+Architecture:          i686
+CPU 运行模式：    32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                4
+On-line CPU(s) list:   0-3
+每个核的线程数：2
+每个座的核数：  2
+Socket(s):             1
+厂商 ID：           AuthenticAMD
+CPU 系列：          21
+型号：              16
+步进：              1
+CPU MHz：             1400.000
+BogoMIPS:              3793.28
+虚拟化：           AMD-V
+L1d 缓存：          16K
+L1i 缓存：          64K
+L2 缓存：           2048K
