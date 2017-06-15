@@ -6,3 +6,5 @@ For distribute simulation
 `cd distribute`
 
 `bash run client`
+
+try02
