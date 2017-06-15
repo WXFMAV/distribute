@@ -10,4 +10,4 @@ For distribute simulation
 try05
 
 update newrun to run 
-include: runparam.bash, runtest.bash
+include: 
