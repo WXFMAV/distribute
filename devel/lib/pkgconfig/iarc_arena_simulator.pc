@@ -1,8 +1,0 @@
-prefix=/home/exbot/workspace/hehualin_ws/distribute/devel
-
-Name: iarc_arena_simulator
-Description: Description of iarc_arena_simulator
-Version: 0.0.0
-Cflags: -I/home/exbot/workspace/hehualin_ws/distribute/devel/include -I/home/exbot/workspace/hehualin_ws/distribute/src/iarc_arena_simulator/include
-Libs: -L/home/exbot/workspace/hehualin_ws/distribute/devel/lib 
-Requires: message_runtime geometry_msgs nav_msgs std_msgs

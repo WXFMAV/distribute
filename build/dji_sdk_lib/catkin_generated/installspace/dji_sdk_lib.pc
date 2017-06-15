@@ -1,8 +1,0 @@
-prefix=/home/exbot/workspace/hehualin_ws/distribute/install
-
-Name: dji_sdk_lib
-Description: Description of dji_sdk_lib
-Version: 0.1.6
-Cflags: -I/home/exbot/workspace/hehualin_ws/distribute/install/include
-Libs: -L/home/exbot/workspace/hehualin_ws/distribute/install/lib -ldji_sdk_lib
-Requires: 

@@ -1,1 +1,0 @@
-4 loop_time:1169 now_time:1169 seq:0 4(cruise) 1169 7831 9000 content: unkonw task type. error

@@ -1,7 +1,0 @@
-set(_CATKIN_CURRENT_PACKAGE "dji_sdk_demo")
-set(dji_sdk_demo_MAINTAINER "Norman Li <norman.li@dji.com>, Botao Hu <me@botao.hu>")
-set(dji_sdk_demo_DEPRECATED "")
-set(dji_sdk_demo_VERSION "0.1.6")
-set(dji_sdk_demo_BUILD_DEPENDS "dji_sdk" "roscpp" "roslib")
-set(dji_sdk_demo_RUN_DEPENDS "dji_sdk" "roscpp" "roslib")
-set(dji_sdk_demo_BUILDTOOL_DEPENDS "catkin")

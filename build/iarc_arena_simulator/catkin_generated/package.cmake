@@ -1,7 +1,0 @@
-set(_CATKIN_CURRENT_PACKAGE "iarc_arena_simulator")
-set(iarc_arena_simulator_MAINTAINER "hehualin <hithehualin@163.com>")
-set(iarc_arena_simulator_DEPRECATED "")
-set(iarc_arena_simulator_VERSION "0.0.0")
-set(iarc_arena_simulator_BUILD_DEPENDS "message_generation" "nav_msgs" "roscpp" "roslib" "rospy" "std_msgs" "geometry_msgs")
-set(iarc_arena_simulator_RUN_DEPENDS "message_runtime" "nav_msgs" "roscpp" "roslib" "rospy" "std_msgs" "geometry_msgs")
-set(iarc_arena_simulator_BUILDTOOL_DEPENDS "catkin")
