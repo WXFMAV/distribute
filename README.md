@@ -11,3 +11,5 @@ try05
 
 update newrun to run 
 include: runparam.bash, runtest.bash
+
+try update files ...2017.06.16.01:00
