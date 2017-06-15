@@ -12,6 +12,9 @@ function onCtrlC () {
 
 path_now=$(pwd)
 path_data=$(pwd)"/data/"
+path_launch=$path_now"/src/iarc_arena_simulator/launch/"
+catkin_target1=iarc_arena_simulator_generate_messages
+catkin_target2=""
 
 case $1 in
     1)
@@ -33,14 +36,18 @@ case $1 in
         
     ;;
     all|3|*)
-        source me
-        catkin_make iarc_arena_simulator_generate_messages
-        catkin_make
-        for i in `seq 1000`
+        while [ 1 ] 
         do
-            for k in `ls $path_now/src/iarc_arena_simulator/launch`
+
+            git pull origin master
+
+            source me
+            catkin_make $catkin_target1
+            catkin_make $catkin_target2
+
+            for k in `ls $path_launch`
             do
-                if [ ! -d $path_now"/src/iarc_arena_simulator/launch/"$k ]; then
+                if [ ! -d $path_launch$k ]; then
                     continue
                 fi
                 echo $k           
@@ -50,7 +57,7 @@ case $1 in
                     exit 1
                 fi
 
-                path_param_k=$path_now"/src/iarc_arena_simulator/launch/"$k
+                path_param_k=$path_launch$k
                 
                 path_param_loop_yaml=$path_param_k"/param_loop.yaml"
                 path_param_yaml=$path_param_k"/param.yaml"
@@ -86,8 +93,8 @@ case $1 in
 
                 roslaunch $launch_package $launch_file __ns:=$loop_namespace path_param_loop_yaml:=$path_param_loop_yaml path_param_yaml:=$path_param_yaml
 
-                rosparam dump $path_param_k/param_dump.yaml
-                lscpu >$path_param_k/cpu_dump.txt
+                rosparam dump $path_target_k/param_dump.yaml
+                lscpu >$path_target_k/cpu_dump.txt
                 cp $path_param_k/*.* $path_target_dir
 
             done
