@@ -1,7 +1,7 @@
 #params
 #first try of distribute computation
 
-The Origin params
+The Oringin params
 
 rec_arena_cmd_received.txt:
    time_ms, robot_id, robot_cmd

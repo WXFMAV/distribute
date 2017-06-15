@@ -5,7 +5,6 @@
     <param name="file_name_prefix" value="$(arg file_name_prefix)"/>
     <rosparam command="load" file="$(arg path_param_loop_yaml)"/>
     <rosparam command="load" file="$(arg path_param_yaml)"/>   
-
     <node pkg="iarc_arena_simulator" type="iarc_arena_simulator_node" name="iarc_arena_simulator_node" required="true" clear_params="true">
     </node>
     <node pkg="dji_sdk_demo" type="dji_sdk_client_planner_tracking" name="dji_sdk_client_planner_tracking" output="screen" required="false" clear_params="true">
@@ -13,6 +12,8 @@
     <node pkg="dji_sdk_demo" type="dji_sdk_client_planner_path" name="dji_sdk_client_planner_path" output="screen" required="false" clear_params="true">
     </node>
     <node pkg="dji_sdk_demo" type="dji_sdk_client_planner_cruise" name="dji_sdk_client_planner_cruise" output="screen" required="false" clear_params="true">
+    </node>
+    <node pkg="iarc_arena_simulator" type="script_node" name="script_node" required="false" output="screen" clear_params="true">
     </node>
 
 </launch>

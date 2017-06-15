@@ -49,12 +49,11 @@ int main(int argc, char **argv)
         std::cout<<"load params successed!"<<std::endl;
     }
 
-    std::string filename =  PARAM::file_name_ast_tracking;
-    arena_set_startnow2(filename);
+    arena_set_startnow2(nh);
     LOG(ERROR) <<" arena_time_now "<< arena_time_now();
 
     robotcmd_pub = nh.advertise<iarc_arena_simulator::IARCCommand>("iarc_arena/IARCCommand", 10);
-    path_pub = nh.advertise<nav_msgs::Path>("/iarc_arena/nav_path", 10);
+    path_pub = nh.advertise<nav_msgs::Path>("iarc_arena/nav_path", 10);
     mav_pub = nh.advertise<geometry_msgs::PoseStamped>("iarc_arena/IARCMav", 10);
     quad_status_pub = nh.advertise<iarc_arena_simulator::IARCQuadStatus>("iarc_arena/IARCQuadStatus", 10);
     waypoints_path_pub = nh.advertise<nav_msgs::Path>("iarc_arena/waypoints_path", 10);

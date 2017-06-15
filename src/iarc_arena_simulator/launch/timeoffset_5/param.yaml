@@ -68,10 +68,10 @@ time_offset_ms : 2500
 
 rand_tgt_average : 1.0
 rand_tgt_gauss : 0.0
-rand_tgt_gauss_variance : 0.0001
+rand_tgt_gauss_variance : 0.0005
 rand_obs_average : 1.0
 rand_obs_gauss : 0.0
-rand_obs_gauss_variance : 0.0002
+rand_obs_gauss_variance : 0.0005
 
 str_arena_frame : '/arena_frame'
 
@@ -88,9 +88,6 @@ file_name_bazier_out : 'bazier_out.txt'
 file_name_edgemap : 'edgemap_out.txt'
 file_name_edgepath : 'edgepath_out.txt'
 file_name_timecost : 'timecost_out.txt'
-file_name_ast_tracking : 'rec_ast_tracking.txt'
-file_name_ast_path : 'rec_ast_path.txt'
-file_name_ast_cruise : 'rec_ast_cruise.txt'
 file_name_arena_info : 'rec_arena_info.txt'
 file_name_arena_cmd_received : 'rec_arena_cmd_received.txt'
 file_name_arena_cmd_sent : 'rec_arena_cmd_sent.txt'

@@ -220,7 +220,7 @@ typedef struct IARC_COMMAND{
 
 uint32_t arena_time_now();
 void arena_set_startnow();
-void arena_set_startnow2(std::string filename);
+void arena_set_startnow2(ros::NodeHandle &nh);
 double quaternion_to_theta_z(double q_w, double q_z);
 int theta2quaternion(double theta, double &w, double &x, double &y, double &z);
 iarc_arena_simulator::IARCTask make_task_type_reach(std::string frame_id,
