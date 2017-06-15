@@ -3,6 +3,8 @@
 
 The Oringin params
 
+try
+
 rec_arena_cmd_received.txt:
    time_ms, robot_id, robot_cmd
 # fprintf(fp_cmdrcv,"%d %d %d\n",time_now, msg->robot_id, msg->command_kind);
