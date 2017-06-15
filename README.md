@@ -7,4 +7,4 @@ For distribute simulation
 
 `bash run client`
 
-try02
+try04
