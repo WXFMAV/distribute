@@ -12,11 +12,11 @@ err_str="error: Your local changes to the following files would be overwritten b
 str=`git pull origin master 2>&1 | grep "$err_str"`
 echo $str
 if [ "$str" ]; then
-    echo "require overwrite"
+    echo "require reset pulled"
     git reset --hard origin/master
     git pull origin master
 else
-    echo "no need to overwrite"
+    echo "pulled"
 fi
  
 source me
