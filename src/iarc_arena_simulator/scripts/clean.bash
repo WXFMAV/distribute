@@ -17,6 +17,7 @@ catkin_target1=iarc_arena_simulator_generate_messages
 catkin_target2=""
 
 echo $(pwd)
+
 echo "cleaned!"
 
 

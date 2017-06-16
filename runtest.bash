@@ -2,6 +2,7 @@
 
 path_now=$(pwd)
 path_data=$(pwd)"/data/"
+path_launch=$path_now"/src/iarc_arena_simulator/launch/"
         source me
         catkin_make iarc_arena_simulator_generate_messages
         catkin_make

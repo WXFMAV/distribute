@@ -1,13 +1,9 @@
 #params
 #first try of distribute computation
 
-variance changed
-`rand_tgt_average : 2.0`
-`rand_tgt_gauss : 0.0`
-`rand_tgt_gauss_variance : 0.0001`
-`rand_obs_average : 2.0`
-`rand_obs_gauss : 0.0`
-`rand_obs_gauss_variance : 0.0002`
+angle_field_rad : rad(120.0/180.0*pi)
+
+try
 
 rec_arena_cmd_received.txt:
    time_ms, robot_id, robot_cmd

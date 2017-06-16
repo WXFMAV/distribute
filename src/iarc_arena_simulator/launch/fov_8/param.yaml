@@ -1,0 +1,96 @@
+#allows for type of 'int','float','bool','std::string','list','dictionary' 
+ros_rate_cruise : 5
+ros_rate_decision : 5
+ros_rate_path : 15
+ros_rate_tracking : 50
+map_memory_step_x : 1.0
+map_memory_step_y : 1.0
+map_memory_org_x : -10.0
+map_memory_org_y : -10.0
+cruise_circular_sample_count : 10
+cruise_velocity : 1.0
+cruise_height : 2.0
+interaction_height : 1.0
+
+m : 3
+n : 9
+const_tf : 0.33
+arena_size : 20.0
+angle_field_rad : rad(80.0/180.0*pi)
+list_capacity : 5000
+taskslist_capacity : 50
+velocity_obs : 0.33
+velocity_tgt : 0.33
+velocity_mav_max : 2.0
+
+tree_search_max_depth : 0
+tree_search_gama : 0.8
+tree_search_gama_theta : 0.01
+tree_search_gama_distance : 0.01
+tree_search_gama_inner : 0.01
+tree_search_max_target_counts : 4
+ramda_t : 10.0
+ramda_t_S : 1
+ramda_t_E : -1
+ramda_t_A : 1.0
+ramda_t_SAE : 1.0
+ramda_t_y : 1.0
+ramda_t_theta : 0.5
+ramda_m : 2.0
+ramda_m_dis : 0.0
+ramda_m_i_op : 1.0
+ramda_o : 0.0
+ramda_o_s : 0.0
+ramda_o_a : 1.0
+ramda_cruise : 0.2
+
+radius_neary : 15.0
+radius_collision : 1.0
+radius_safe : 2.0
+radius_lidar : 5.0
+period_turn_ms : 20000
+time_turn_180_ms : 2600
+time_turn_45_ms : 650
+time_cruise_det_ms : 8000
+time_turn_distinguish_ms : 1000
+obstacle_time_forget_ms : 10000
+target_time_forget_ms : 40000
+
+edge_num_direction : 8
+edge_angle_limited : rad(pi/2.0) 
+edge_velocity_static : 0.10
+edge_time_one_edge : 1.0
+edge_nosolution_jump : 100000
+edge_coef_angle : 0.001
+edge_angle_de : rad(pi/4.0) 
+edge_bazier_rate : 0.1
+time_offset_ms : 200
+
+rand_tgt_average : 1.0
+rand_tgt_gauss : 0.0
+rand_tgt_gauss_variance : 0.0005
+rand_obs_average : 1.0
+rand_obs_gauss : 0.0
+rand_obs_gauss_variance : 0.0005
+
+str_arena_frame : '/arena_frame'
+
+file_name_lqr_plist : 'params/plist.txt'
+file_name_tracking : 'rec_tracking.txt'
+file_name_controller : 'rec_controller.txt'
+file_name_path : 'rec_path.txt'
+file_name_path_env : 'rec_path_env.txt'
+file_name_task : 'rec_task.txt'
+file_name_task_env : 'rec_task_env.txt'
+file_name_map : 'rec_map.txt'
+file_name_bazier_in : 'bazier_in.txt'
+file_name_bazier_out : 'bazier_out.txt'
+file_name_edgemap : 'edgemap_out.txt'
+file_name_edgepath : 'edgepath_out.txt'
+file_name_timecost : 'timecost_out.txt'
+file_name_arena_info : 'rec_arena_info.txt'
+file_name_arena_cmd_received : 'rec_arena_cmd_received.txt'
+file_name_arena_cmd_sent : 'rec_arena_cmd_sent.txt'
+file_name_health : 'rec_health.txt'
+
+

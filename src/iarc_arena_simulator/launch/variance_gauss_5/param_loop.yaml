@@ -1,0 +1,9 @@
+loop_param_k : 'variance_gauss_5'
+loop_id : 1
+loop_id_str : '001'
+health_cruise_on : 0
+health_path_on : 0
+health_tracking_on : 0
+health_cruise_timeup : 0
+health_path_timeup : 0
+health_tracking_timeup : 0
