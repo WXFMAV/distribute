@@ -238,6 +238,30 @@ int main(int argc,char **argv)
     while(ros::ok())
     {
         if (arena_time_now()>600000){
+            FILE* fp_health = fopen(PARAM::file_name_health.c_str(),"w");
+            if(fp_health == NULL){
+                cout<<" open health filed failed!"<<endl;
+            }
+
+            int health_cruise_on = 0;
+            int health_path_on = 0;
+            int health_tracking_on = 0;
+            int health_cruise_timeup = 0;
+            int health_path_timeup = 0;
+            int health_tracking_timeup = 0;
+
+            nh.getParam("health_cruise_on",health_cruise_on);
+            nh.getParam("health_path_on",health_path_on);
+            nh.getParam("health_tracking_on",health_tracking_on);
+            nh.getParam("health_cruise_timeup", health_cruise_timeup);
+            nh.getParam("health_path_timeup", health_path_timeup);
+            nh.getParam("health_tracking_timeup", health_tracking_timeup);
+
+            fprintf(fp_health, "%d\n%d\n%d\n%d\n%d\n%d\n", health_cruise_on, health_cruise_timeup, health_path_on, health_path_timeup, health_tracking_on, health_tracking_timeup);
+
+            fflush(fp_health);        
+            fclose(fp_health);
+
            break;
         }
         cnt++;
@@ -387,30 +411,6 @@ int main(int argc,char **argv)
     }
 
     if(fp!=NULL) fclose(fp),fp=NULL;
-    if(fp_cmdrcv!=NULL) fclose(fp_cmdrcv),fp_cmdrcv=NULL;
-   
-    FILE* fp_health = fopen(PARAM::file_name_health.c_str(),"w");
-    if(fp_health == NULL){
-        cout<<" open health filed failed!"<<endl;
-    }
-
-    int health_cruise_on = 0;
-    int health_path_on = 0;
-    int health_tracking_on = 0;
-    int health_cruise_timeup = 0;
-    int health_path_timeup = 0;
-    int health_tracking_timeup = 0;
-
-    nh.getParam("health_cruise_on",health_cruise_on);
-    nh.getParam("health_path_on",health_path_on);
-    nh.getParam("health_tracking_on",health_tracking_on);
-    nh.getParam("health_cruise_timeup", health_cruise_timeup);
-    nh.getParam("health_path_timeup", health_path_timeup);
-    nh.getParam("health_tracking_timeup", health_tracking_timeup);
-
-    fprintf(fp_health, "%d\n%d\n%d\n%d\n%d\n%d\n", health_cruise_on, health_cruise_timeup, health_path_on, health_path_timeup, health_tracking_on, health_tracking_timeup);
-
-    fflush(fp_health);        
-    fclose(fp_health);
+    if(fp_cmdrcv!=NULL) fclose(fp_cmdrcv),fp_cmdrcv=NULL;  
     return 0;
 }
