@@ -160,7 +160,6 @@ iarc_arena_simulator::IARCWaypoint  PlannerTracking::get_waypoint_now()
 
     IARCWaypoint wp_now = _wp_list[_pos_now % list_capacity];
     LOG(INFO) <<"path list accept! pos_now= " <<_pos_now <<" pos_end = "<< _pos_end  <<"seq =" << wp_now.seq<<" now time ="<<time_now;
-        fprintf(_fp_tracking, "wp_now.tms = %u\n",wp_now.tms);
     return wp_now;
 }
 

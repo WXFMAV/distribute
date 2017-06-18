@@ -12,11 +12,11 @@ err_str="error: Your local changes to the following files would be overwritten b
 str=`git pull origin master 2>&1 | grep "$err_str"`
 echo $str
 if [ "$str" ]; then
-    echo "require overwrite"
+    echo "require reset pulled"
     git reset --hard origin/master
     git pull origin master
 else
-    echo "no need to overwrite"
+    echo "pulled"
 fi
  
 source me
@@ -24,8 +24,15 @@ catkin_make $catkin_target1
 catkin_make $catkin_target2
 
 if [ ! -d $path_launch$k ]; then
-    continue
+    echo "not found..."$path_launch$k
+    exit 0
 fi
+
+if [ -f $path_launch$k"/ignore" ];then
+    echo "skipped..."$path_launch$k
+    exit 0
+fi
+
 echo $k           
 
 path_param_k=$path_launch$k
@@ -69,7 +76,7 @@ mkdir -p $path_target_dir
 
 roslaunch $launch_package $launch_file __ns:=$loop_namespace path_param_loop_yaml:=$path_param_loop_yaml path_param_yaml:=$path_param_yaml
 
-rosparam dump $path_target_dir/param_dump.yaml
 lscpu >$path_target_dir/cpu_dump.txt
+date >$path_target_dir/date.txt
 cp $path_param_k/*.* $path_target_dir
 
