@@ -19,6 +19,10 @@ else
     echo "pulled"
 fi
  
+source me
+catkin_make $catkin_target1
+catkin_make $catkin_target2
+
 if [ ! -d $path_launch$k ]; then
     echo "not found..."$path_launch$k
     exit 0
@@ -30,10 +34,6 @@ if [ -f $path_launch$k"/ignore" ];then
 fi
 
 echo $k           
-
-source me
-catkin_make $catkin_target1
-catkin_make $catkin_target2
 
 path_param_k=$path_launch$k
                 
